@@ -41,3 +41,15 @@ tel.addEventListener('input', function () {
         telError.textContent = "Enter Valid Mobile Number";
     }
 });
+//Validating password,should have min 8 characters
+const pwd = document.querySelector('#pwd');
+const pwdError = document.querySelector('.pwd-error');
+pwd.addEventListener('input', function () {
+    let pwdRegex = RegExp("^[a-zA-Z]{8,}$");
+    if (pwdRegex.test(pwd.value)) {
+       pwdError.textContent = "";
+    }
+    else {
+        pwdError.textContent = "enter Valid password ";
+    }
+});
