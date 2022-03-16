@@ -27,3 +27,17 @@ email.addEventListener('input', function()
             emailError.textContent = "Enter a Vaild email";
         }
     });
+    //validating mobile number
+const tel = document.querySelector('#tel');
+const telError = document.querySelector('.tel-error');
+tel.addEventListener('input', function () {
+    let telRegex = RegExp("^91[ ][1-9][0-9]{9}$");
+    if (telRegex.test(tel.value) || !tel.value) 
+    {
+        telError.textContent = "";
+    }
+    else 
+    {
+        telError.textContent = "Enter Valid Mobile Number";
+    }
+});
