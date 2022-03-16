@@ -44,12 +44,25 @@ tel.addEventListener('input', function () {
 //Validating password,should have min 8 characters
 const pwd = document.querySelector('#pwd');
 const pwdError = document.querySelector('.pwd-error');
-pwd.addEventListener('input', function () {
-    let pwdRegex = RegExp("^[a-zA-Z]{8,}$");
+pwd.addEventListener('input', function () {  
+     //let pwdRegex = RegExp("^[a-zA-Z]{8,}$");                                               //Password must contain min 8 characters
+    //let pwdRegex = RegExp("^(?=.*[a-z])(?=.*[A-Z]).{8,}$");                                // atleast 1 Upper Case
+    //let pwdRegex = RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$");                     //atleast 1 numeric value
+    //let pwdRegex = RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[&%$#@?^*!~]).{8,}$");   //atleast 1 special character
+    
+    let pwdRegex = RegExp('^(?=.*[0-9])(?=.*[A-Z])(?=.*[^0-9a-zA-Z])(?!.*[^0-9a-zA-Z].*[^0-9a-zA-Z]).{8,}$');     // + exactly 1 special character
     if (pwdRegex.test(pwd.value)) {
        pwdError.textContent = "";
     }
     else {
-        pwdError.textContent = "enter Valid password ";
+        pwdError.textContent = "Enter a Valid Password";
     }
 });
+
+//Dynamic salary range based on user input
+const salary = document.querySelector('#salary');
+const output = document.querySelector('.salary-output');
+output.textContent = salary.value;
+salary.addEventListener('input', function(){
+    output.textContent = salary.value;
+})
